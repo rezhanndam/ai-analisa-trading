@@ -1,0 +1,414 @@
+
+> ai-trading@0.1.0 dev
+> next dev -p 3002
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3002
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1642ms
+ ✓ Compiled /src/middleware in 501ms (177 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 5.7s (666 modules)
+ ✓ Compiled in 642ms (320 modules)
+ GET / 307 in 6438ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 7.7s (737 modules)
+ GET /dashboard 200 in 8114ms
+ ✓ Compiled /api/auth/[...nextauth] in 358ms (418 modules)
+ ✓ Compiled (656 modules)
+ POST /api/ingest 500 in 2368ms
+ GET /api/auth/session 200 in 2622ms
+ ✓ Compiled /api/candles in 247ms (658 modules)
+ GET /api/candles?assetId=BTC-USDT&timeframe=1H 200 in 419ms
+ GET /api/auth/session 200 in 103ms
+ ○ Compiling /api/analysis ...
+ ✓ Compiled /api/analysis in 1718ms (934 modules)
+ POST /api/ingest 500 in 5703ms
+ GET /api/candles?assetId=BTC-USDT&timeframe=1H 200 in 44ms
+ ○ Compiling /scanner ...
+ ✓ Compiled /scanner in 724ms (1292 modules)
+ ✓ Compiled /backtest in 418ms (1298 modules)
+ ✓ Compiled /walkforward in 484ms (1304 modules)
+Derivatives fetch failed: TypeError: fetch failed
+    at node:internal/deps/undici/undici:15845:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BinanceDerivativesProvider.fetchDerivatives (webpack-internal:///(rsc)/./src/lib/providers/derivatives.ts:10:27)
+    at async processAnalysis (webpack-internal:///(rsc)/./src/lib/analysis/engine.ts:134:27)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/analysis/route.ts:17:24)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\Analisa Trade\ai-trading\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  [cause]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id
+      at Object.checkServerIdentity (node:tls:455:12)
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1641:27)
+      at TLSSocket.emit (node:events:508:28)
+      at TLSSocket._finishInit (node:_tls_wrap:1077:8)
+      at ssl.onhandshakedone (node:_tls_wrap:863:12) {
+    code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+    reason: "Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id",
+    host: 'fapi.binance.com',
+    cert: {
+      subject: [Object: null prototype],
+      issuer: [Object: null prototype],
+      subjectaltname: 'DNS:*.ioh.co.id, DNS:ioh.co.id',
+      infoAccess: [Object: null prototype],
+      ca: false,
+      modulus: 'BCD8DAA329EEEC540D6E5D8EC61A8F17D0FE34A4DDF7E426B7A0D9A6C523EDD6CC722F39F94AD4E72A50593FBDA2B19535A6BDADD0987EB5A8B81077A94E76981C36845E667BA177683E31DA7C83E3574C3C15321A10A3FAA2C8ED704C33CB2149F53B32BCA3D7C77D1506D71D95B4B2743AE5324F7633DCC7943101BF180A2B6FCF53997154566AE7C1CB3D31DADA91D80095C71ADC9F78F7DF068FDCBC529C33EB271C2C5DC6F7E9953BDEA82DA006C7BACC4AFB1D4AF5F800F368B9163F1C828CC14CC06F47DDEC5DA4F5E51E26A488BCDA69B2FC8573CCD48393E45557251EA034D8E5E73E4D5F5EE2CF9A22D048FBDA1803F85B5B7ACD21B44B998AA6DD',
+      exponent: '0x10001',
+      pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 bc d8 da a3 29 ee ec 54 0d 6e 5d 8e c6 1a 8f 17 d0 ... 244 more bytes>,
+      bits: 2048,
+      valid_from: 'Feb 14 01:20:21 2026 GMT',
+      valid_to: 'Mar 18 01:20:20 2027 GMT',
+      fingerprint: 'E1:41:85:5B:AD:F3:54:8C:C2:B1:2A:8B:DD:49:58:F4:33:04:5F:F3',
+      fingerprint256: '7E:08:20:C9:09:BD:CE:DD:43:4B:53:F8:4A:79:2D:6A:39:20:3C:75:EB:E9:C8:D3:25:02:56:69:16:AF:8A:EE',
+      fingerprint512: '50:B5:F5:A6:2D:7C:91:BF:F7:4C:6C:02:19:DB:03:29:57:F5:BA:14:06:8E:EF:EB:2F:10:3B:5E:B8:EB:13:93:6A:C4:2B:B4:8B:98:8E:28:A3:F8:1A:8D:74:D8:16:19:2E:E8:EE:55:A9:36:5A:6A:DC:BD:BB:0A:72:19:8C:B4',
+      ext_key_usage: [Array],
+      serialNumber: '3E20F69353174ADBD0799C59',
+      raw: <Buffer 30 82 06 4a 30 82 05 32 a0 03 02 01 02 02 0c 3e 20 f6 93 53 17 4a db d0 79 9c 59 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 53 31 0b 30 09 06 03 ... 1564 more bytes>,
+      asn1Curve: undefined,
+      nistCurve: undefined,
+      issuerCertificate: [Object]
+    }
+  }
+}
+ POST /api/analysis 200 in 5674ms
+ POST /api/analysis 200 in 8935ms
+Derivatives fetch failed: TypeError: fetch failed
+    at node:internal/deps/undici/undici:15845:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BinanceDerivativesProvider.fetchDerivatives (webpack-internal:///(rsc)/./src/lib/providers/derivatives.ts:10:27)
+    at async processAnalysis (webpack-internal:///(rsc)/./src/lib/analysis/engine.ts:134:27)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/analysis/route.ts:17:24)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\Analisa Trade\ai-trading\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  [cause]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id
+      at Object.checkServerIdentity (node:tls:455:12)
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1641:27)
+      at TLSSocket.emit (node:events:508:28)
+      at TLSSocket._finishInit (node:_tls_wrap:1077:8)
+      at ssl.onhandshakedone (node:_tls_wrap:863:12) {
+    code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+    reason: "Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id",
+    host: 'fapi.binance.com',
+    cert: {
+      subject: [Object: null prototype],
+      issuer: [Object: null prototype],
+      subjectaltname: 'DNS:*.ioh.co.id, DNS:ioh.co.id',
+      infoAccess: [Object: null prototype],
+      ca: false,
+      modulus: 'BCD8DAA329EEEC540D6E5D8EC61A8F17D0FE34A4DDF7E426B7A0D9A6C523EDD6CC722F39F94AD4E72A50593FBDA2B19535A6BDADD0987EB5A8B81077A94E76981C36845E667BA177683E31DA7C83E3574C3C15321A10A3FAA2C8ED704C33CB2149F53B32BCA3D7C77D1506D71D95B4B2743AE5324F7633DCC7943101BF180A2B6FCF53997154566AE7C1CB3D31DADA91D80095C71ADC9F78F7DF068FDCBC529C33EB271C2C5DC6F7E9953BDEA82DA006C7BACC4AFB1D4AF5F800F368B9163F1C828CC14CC06F47DDEC5DA4F5E51E26A488BCDA69B2FC8573CCD48393E45557251EA034D8E5E73E4D5F5EE2CF9A22D048FBDA1803F85B5B7ACD21B44B998AA6DD',
+      exponent: '0x10001',
+      pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 bc d8 da a3 29 ee ec 54 0d 6e 5d 8e c6 1a 8f 17 d0 ... 244 more bytes>,
+      bits: 2048,
+      valid_from: 'Feb 14 01:20:21 2026 GMT',
+      valid_to: 'Mar 18 01:20:20 2027 GMT',
+      fingerprint: 'E1:41:85:5B:AD:F3:54:8C:C2:B1:2A:8B:DD:49:58:F4:33:04:5F:F3',
+      fingerprint256: '7E:08:20:C9:09:BD:CE:DD:43:4B:53:F8:4A:79:2D:6A:39:20:3C:75:EB:E9:C8:D3:25:02:56:69:16:AF:8A:EE',
+      fingerprint512: '50:B5:F5:A6:2D:7C:91:BF:F7:4C:6C:02:19:DB:03:29:57:F5:BA:14:06:8E:EF:EB:2F:10:3B:5E:B8:EB:13:93:6A:C4:2B:B4:8B:98:8E:28:A3:F8:1A:8D:74:D8:16:19:2E:E8:EE:55:A9:36:5A:6A:DC:BD:BB:0A:72:19:8C:B4',
+      ext_key_usage: [Array],
+      serialNumber: '3E20F69353174ADBD0799C59',
+      raw: <Buffer 30 82 06 4a 30 82 05 32 a0 03 02 01 02 02 0c 3e 20 f6 93 53 17 4a db d0 79 9c 59 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 53 31 0b 30 09 06 03 ... 1564 more bytes>,
+      asn1Curve: undefined,
+      nistCurve: undefined,
+      issuerCertificate: [Object]
+    }
+  }
+}
+ GET / 307 in 210ms
+ GET /dashboard 200 in 109ms
+ GET /api/auth/session 200 in 53ms
+ GET /api/auth/session 200 in 14ms
+ POST /api/ingest 500 in 538ms
+ GET /api/candles?assetId=BTC-USDT&timeframe=1H 200 in 44ms
+Derivatives fetch failed: TypeError: fetch failed
+    at node:internal/deps/undici/undici:15845:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BinanceDerivativesProvider.fetchDerivatives (webpack-internal:///(rsc)/./src/lib/providers/derivatives.ts:10:27)
+    at async processAnalysis (webpack-internal:///(rsc)/./src/lib/analysis/engine.ts:134:27)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/analysis/route.ts:17:24)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\Analisa Trade\ai-trading\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  [cause]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id
+      at Object.checkServerIdentity (node:tls:455:12)
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1641:27)
+      at TLSSocket.emit (node:events:508:28)
+      at TLSSocket._finishInit (node:_tls_wrap:1077:8)
+      at ssl.onhandshakedone (node:_tls_wrap:863:12) {
+    code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+    reason: "Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id",
+    host: 'fapi.binance.com',
+    cert: {
+      subject: [Object: null prototype],
+      issuer: [Object: null prototype],
+      subjectaltname: 'DNS:*.ioh.co.id, DNS:ioh.co.id',
+      infoAccess: [Object: null prototype],
+      ca: false,
+      modulus: 'BCD8DAA329EEEC540D6E5D8EC61A8F17D0FE34A4DDF7E426B7A0D9A6C523EDD6CC722F39F94AD4E72A50593FBDA2B19535A6BDADD0987EB5A8B81077A94E76981C36845E667BA177683E31DA7C83E3574C3C15321A10A3FAA2C8ED704C33CB2149F53B32BCA3D7C77D1506D71D95B4B2743AE5324F7633DCC7943101BF180A2B6FCF53997154566AE7C1CB3D31DADA91D80095C71ADC9F78F7DF068FDCBC529C33EB271C2C5DC6F7E9953BDEA82DA006C7BACC4AFB1D4AF5F800F368B9163F1C828CC14CC06F47DDEC5DA4F5E51E26A488BCDA69B2FC8573CCD48393E45557251EA034D8E5E73E4D5F5EE2CF9A22D048FBDA1803F85B5B7ACD21B44B998AA6DD',
+      exponent: '0x10001',
+      pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 bc d8 da a3 29 ee ec 54 0d 6e 5d 8e c6 1a 8f 17 d0 ... 244 more bytes>,
+      bits: 2048,
+      valid_from: 'Feb 14 01:20:21 2026 GMT',
+      valid_to: 'Mar 18 01:20:20 2027 GMT',
+      fingerprint: 'E1:41:85:5B:AD:F3:54:8C:C2:B1:2A:8B:DD:49:58:F4:33:04:5F:F3',
+      fingerprint256: '7E:08:20:C9:09:BD:CE:DD:43:4B:53:F8:4A:79:2D:6A:39:20:3C:75:EB:E9:C8:D3:25:02:56:69:16:AF:8A:EE',
+      fingerprint512: '50:B5:F5:A6:2D:7C:91:BF:F7:4C:6C:02:19:DB:03:29:57:F5:BA:14:06:8E:EF:EB:2F:10:3B:5E:B8:EB:13:93:6A:C4:2B:B4:8B:98:8E:28:A3:F8:1A:8D:74:D8:16:19:2E:E8:EE:55:A9:36:5A:6A:DC:BD:BB:0A:72:19:8C:B4',
+      ext_key_usage: [Array],
+      serialNumber: '3E20F69353174ADBD0799C59',
+      raw: <Buffer 30 82 06 4a 30 82 05 32 a0 03 02 01 02 02 0c 3e 20 f6 93 53 17 4a db d0 79 9c 59 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 53 31 0b 30 09 06 03 ... 1564 more bytes>,
+      asn1Curve: undefined,
+      nistCurve: undefined,
+      issuerCertificate: [Object]
+    }
+  }
+}
+ POST /api/analysis 200 in 307ms
+ ○ Compiling /signals ...
+ ✓ Compiled /signals in 784ms (1310 modules)
+ ✓ Compiled /api/signals in 309ms (952 modules)
+ GET /api/signals 200 in 369ms
+ GET /api/signals 200 in 11ms
+ POST /api/ingest 500 in 3580ms
+ GET /api/candles?assetId=BTC-USDT&timeframe=1H 200 in 32ms
+Derivatives fetch failed: TypeError: fetch failed
+    at node:internal/deps/undici/undici:15845:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BinanceDerivativesProvider.fetchDerivatives (webpack-internal:///(rsc)/./src/lib/providers/derivatives.ts:10:27)
+    at async processAnalysis (webpack-internal:///(rsc)/./src/lib/analysis/engine.ts:134:27)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/analysis/route.ts:17:24)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\Analisa Trade\ai-trading\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  [cause]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id
+      at Object.checkServerIdentity (node:tls:455:12)
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1641:27)
+      at TLSSocket.emit (node:events:508:28)
+      at TLSSocket._finishInit (node:_tls_wrap:1077:8)
+      at ssl.onhandshakedone (node:_tls_wrap:863:12) {
+    code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+    reason: "Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id",
+    host: 'fapi.binance.com',
+    cert: {
+      subject: [Object: null prototype],
+      issuer: [Object: null prototype],
+      subjectaltname: 'DNS:*.ioh.co.id, DNS:ioh.co.id',
+      infoAccess: [Object: null prototype],
+      ca: false,
+      modulus: 'BCD8DAA329EEEC540D6E5D8EC61A8F17D0FE34A4DDF7E426B7A0D9A6C523EDD6CC722F39F94AD4E72A50593FBDA2B19535A6BDADD0987EB5A8B81077A94E76981C36845E667BA177683E31DA7C83E3574C3C15321A10A3FAA2C8ED704C33CB2149F53B32BCA3D7C77D1506D71D95B4B2743AE5324F7633DCC7943101BF180A2B6FCF53997154566AE7C1CB3D31DADA91D80095C71ADC9F78F7DF068FDCBC529C33EB271C2C5DC6F7E9953BDEA82DA006C7BACC4AFB1D4AF5F800F368B9163F1C828CC14CC06F47DDEC5DA4F5E51E26A488BCDA69B2FC8573CCD48393E45557251EA034D8E5E73E4D5F5EE2CF9A22D048FBDA1803F85B5B7ACD21B44B998AA6DD',
+      exponent: '0x10001',
+      pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 bc d8 da a3 29 ee ec 54 0d 6e 5d 8e c6 1a 8f 17 d0 ... 244 more bytes>,
+      bits: 2048,
+      valid_from: 'Feb 14 01:20:21 2026 GMT',
+      valid_to: 'Mar 18 01:20:20 2027 GMT',
+      fingerprint: 'E1:41:85:5B:AD:F3:54:8C:C2:B1:2A:8B:DD:49:58:F4:33:04:5F:F3',
+      fingerprint256: '7E:08:20:C9:09:BD:CE:DD:43:4B:53:F8:4A:79:2D:6A:39:20:3C:75:EB:E9:C8:D3:25:02:56:69:16:AF:8A:EE',
+      fingerprint512: '50:B5:F5:A6:2D:7C:91:BF:F7:4C:6C:02:19:DB:03:29:57:F5:BA:14:06:8E:EF:EB:2F:10:3B:5E:B8:EB:13:93:6A:C4:2B:B4:8B:98:8E:28:A3:F8:1A:8D:74:D8:16:19:2E:E8:EE:55:A9:36:5A:6A:DC:BD:BB:0A:72:19:8C:B4',
+      ext_key_usage: [Array],
+      serialNumber: '3E20F69353174ADBD0799C59',
+      raw: <Buffer 30 82 06 4a 30 82 05 32 a0 03 02 01 02 02 0c 3e 20 f6 93 53 17 4a db d0 79 9c 59 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 53 31 0b 30 09 06 03 ... 1564 more bytes>,
+      asn1Curve: undefined,
+      nistCurve: undefined,
+      issuerCertificate: [Object]
+    }
+  }
+}
+ POST /api/analysis 200 in 221ms
+ GET /api/auth/session 200 in 37ms
+ ○ Compiling /papertrading ...
+ ✓ Compiled /papertrading in 717ms (1318 modules)
+ ✓ Compiled /api/papertrading in 347ms (958 modules)
+ GET /api/papertrading 200 in 408ms
+ ○ Compiling /strategy ...
+ ✓ Compiled /strategy in 868ms (1326 modules)
+ GET /api/papertrading 200 in 895ms
+ ○ Compiling /status ...
+ ✓ Compiled /status in 549ms (1332 modules)
+ POST /api/ingest 500 in 1486ms
+ POST /api/ingest 500 in 1498ms
+ GET /api/candles?assetId=BTC-USDT&timeframe=1H 200 in 40ms
+ GET /api/candles?assetId=BTC-USDT&timeframe=1H 200 in 63ms
+Derivatives fetch failed: TypeError: fetch failed
+    at node:internal/deps/undici/undici:15845:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BinanceDerivativesProvider.fetchDerivatives (webpack-internal:///(rsc)/./src/lib/providers/derivatives.ts:10:27)
+    at async processAnalysis (webpack-internal:///(rsc)/./src/lib/analysis/engine.ts:134:27)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/analysis/route.ts:17:24)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\Analisa Trade\ai-trading\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  [cause]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id
+      at Object.checkServerIdentity (node:tls:455:12)
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1641:27)
+      at TLSSocket.emit (node:events:508:28)
+      at TLSSocket._finishInit (node:_tls_wrap:1077:8)
+      at ssl.onhandshakedone (node:_tls_wrap:863:12) {
+    code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+    reason: "Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id",
+    host: 'fapi.binance.com',
+    cert: {
+      subject: [Object: null prototype],
+      issuer: [Object: null prototype],
+      subjectaltname: 'DNS:*.ioh.co.id, DNS:ioh.co.id',
+      infoAccess: [Object: null prototype],
+      ca: false,
+      modulus: 'BCD8DAA329EEEC540D6E5D8EC61A8F17D0FE34A4DDF7E426B7A0D9A6C523EDD6CC722F39F94AD4E72A50593FBDA2B19535A6BDADD0987EB5A8B81077A94E76981C36845E667BA177683E31DA7C83E3574C3C15321A10A3FAA2C8ED704C33CB2149F53B32BCA3D7C77D1506D71D95B4B2743AE5324F7633DCC7943101BF180A2B6FCF53997154566AE7C1CB3D31DADA91D80095C71ADC9F78F7DF068FDCBC529C33EB271C2C5DC6F7E9953BDEA82DA006C7BACC4AFB1D4AF5F800F368B9163F1C828CC14CC06F47DDEC5DA4F5E51E26A488BCDA69B2FC8573CCD48393E45557251EA034D8E5E73E4D5F5EE2CF9A22D048FBDA1803F85B5B7ACD21B44B998AA6DD',
+      exponent: '0x10001',
+      pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 bc d8 da a3 29 ee ec 54 0d 6e 5d 8e c6 1a 8f 17 d0 ... 244 more bytes>,
+      bits: 2048,
+      valid_from: 'Feb 14 01:20:21 2026 GMT',
+      valid_to: 'Mar 18 01:20:20 2027 GMT',
+      fingerprint: 'E1:41:85:5B:AD:F3:54:8C:C2:B1:2A:8B:DD:49:58:F4:33:04:5F:F3',
+      fingerprint256: '7E:08:20:C9:09:BD:CE:DD:43:4B:53:F8:4A:79:2D:6A:39:20:3C:75:EB:E9:C8:D3:25:02:56:69:16:AF:8A:EE',
+      fingerprint512: '50:B5:F5:A6:2D:7C:91:BF:F7:4C:6C:02:19:DB:03:29:57:F5:BA:14:06:8E:EF:EB:2F:10:3B:5E:B8:EB:13:93:6A:C4:2B:B4:8B:98:8E:28:A3:F8:1A:8D:74:D8:16:19:2E:E8:EE:55:A9:36:5A:6A:DC:BD:BB:0A:72:19:8C:B4',
+      ext_key_usage: [Array],
+      serialNumber: '3E20F69353174ADBD0799C59',
+      raw: <Buffer 30 82 06 4a 30 82 05 32 a0 03 02 01 02 02 0c 3e 20 f6 93 53 17 4a db d0 79 9c 59 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 53 31 0b 30 09 06 03 ... 1564 more bytes>,
+      asn1Curve: undefined,
+      nistCurve: undefined,
+      issuerCertificate: [Object]
+    }
+  }
+}
+ POST /api/analysis 200 in 181ms
+Derivatives fetch failed: TypeError: fetch failed
+    at node:internal/deps/undici/undici:15845:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BinanceDerivativesProvider.fetchDerivatives (webpack-internal:///(rsc)/./src/lib/providers/derivatives.ts:10:27)
+    at async processAnalysis (webpack-internal:///(rsc)/./src/lib/analysis/engine.ts:134:27)
+    at async POST (webpack-internal:///(rsc)/./src/app/api/analysis/route.ts:17:24)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+    at async eT.execute (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+    at async eT.handle (D:\Analisa Trade\ai-trading\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+    at async doRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1496:28)
+    at async DevServer.renderPageComponent (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\Analisa Trade\ai-trading\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\router-server.js:383:13)
+    at async Server.requestListener (D:\Analisa Trade\ai-trading\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  [cause]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id
+      at Object.checkServerIdentity (node:tls:455:12)
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1641:27)
+      at TLSSocket.emit (node:events:508:28)
+      at TLSSocket._finishInit (node:_tls_wrap:1077:8)
+      at ssl.onhandshakedone (node:_tls_wrap:863:12) {
+    code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+    reason: "Host: fapi.binance.com. is not in the cert's altnames: DNS:*.ioh.co.id, DNS:ioh.co.id",
+    host: 'fapi.binance.com',
+    cert: {
+      subject: [Object: null prototype],
+      issuer: [Object: null prototype],
+      subjectaltname: 'DNS:*.ioh.co.id, DNS:ioh.co.id',
+      infoAccess: [Object: null prototype],
+      ca: false,
+      modulus: 'BCD8DAA329EEEC540D6E5D8EC61A8F17D0FE34A4DDF7E426B7A0D9A6C523EDD6CC722F39F94AD4E72A50593FBDA2B19535A6BDADD0987EB5A8B81077A94E76981C36845E667BA177683E31DA7C83E3574C3C15321A10A3FAA2C8ED704C33CB2149F53B32BCA3D7C77D1506D71D95B4B2743AE5324F7633DCC7943101BF180A2B6FCF53997154566AE7C1CB3D31DADA91D80095C71ADC9F78F7DF068FDCBC529C33EB271C2C5DC6F7E9953BDEA82DA006C7BACC4AFB1D4AF5F800F368B9163F1C828CC14CC06F47DDEC5DA4F5E51E26A488BCDA69B2FC8573CCD48393E45557251EA034D8E5E73E4D5F5EE2CF9A22D048FBDA1803F85B5B7ACD21B44B998AA6DD',
+      exponent: '0x10001',
+      pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 bc d8 da a3 29 ee ec 54 0d 6e 5d 8e c6 1a 8f 17 d0 ... 244 more bytes>,
+      bits: 2048,
+      valid_from: 'Feb 14 01:20:21 2026 GMT',
+      valid_to: 'Mar 18 01:20:20 2027 GMT',
+      fingerprint: 'E1:41:85:5B:AD:F3:54:8C:C2:B1:2A:8B:DD:49:58:F4:33:04:5F:F3',
+      fingerprint256: '7E:08:20:C9:09:BD:CE:DD:43:4B:53:F8:4A:79:2D:6A:39:20:3C:75:EB:E9:C8:D3:25:02:56:69:16:AF:8A:EE',
+      fingerprint512: '50:B5:F5:A6:2D:7C:91:BF:F7:4C:6C:02:19:DB:03:29:57:F5:BA:14:06:8E:EF:EB:2F:10:3B:5E:B8:EB:13:93:6A:C4:2B:B4:8B:98:8E:28:A3:F8:1A:8D:74:D8:16:19:2E:E8:EE:55:A9:36:5A:6A:DC:BD:BB:0A:72:19:8C:B4',
+      ext_key_usage: [Array],
+      serialNumber: '3E20F69353174ADBD0799C59',
+      raw: <Buffer 30 82 06 4a 30 82 05 32 a0 03 02 01 02 02 0c 3e 20 f6 93 53 17 4a db d0 79 9c 59 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 53 31 0b 30 09 06 03 ... 1564 more bytes>,
+      asn1Curve: undefined,
+      nistCurve: undefined,
+      issuerCertificate: [Object]
+    }
+  }
+}
+ POST /api/analysis 200 in 7573ms
+ GET /api/auth/session 200 in 192ms
+ GET /api/auth/session 200 in 24ms
+ GET /api/auth/session 200 in 25ms
+   Reload env: .env
+ ✓ Compiled in 1698ms (946 modules)
+[?25h

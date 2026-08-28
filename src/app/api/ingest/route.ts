@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { ingestData } from "@/lib/providers/ingest"
 
+export const dynamic = "force-dynamic"
+
 export async function POST(req: Request) {
   try {
     const { assetId, timeframe } = await req.json()

@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/db/prisma"
 import { NextResponse } from "next/server"
 
+export const dynamic = "force-dynamic"
+
 export async function GET() {
   const performance = await prisma.performance.findMany({
     orderBy: { timestamp: "desc" },

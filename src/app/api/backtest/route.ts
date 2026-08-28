@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { runBacktest, runWalkForward } from "@/lib/analysis/backtest"
 
+export const dynamic = "force-dynamic"
+
 export async function POST(req: Request) {
   try {
     const { assetId, timeframe, mode } = await req.json()

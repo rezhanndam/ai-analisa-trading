@@ -1,0 +1,15 @@
+
+> ai-trading@0.1.0 worker
+> ts-node scripts/worker.ts
+
+Error: Cannot find module 'D:\Analisa Trade\ai-trading\src\lib\scheduler' imported from D:\Analisa Trade\ai-trading\scripts\worker.ts
+    at finalizeResolution (node:internal/modules/esm/resolve:274:11)
+    at moduleResolve (node:internal/modules/esm/resolve:864:10)
+    at defaultResolve (node:internal/modules/esm/resolve:990:11)
+    at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:757:20)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:734:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:317:38)
+    at ModuleJob.#link (node:internal/modules/esm/module_job:208:49) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///D:/Analisa%20Trade/ai-trading/src/lib/scheduler'
+}

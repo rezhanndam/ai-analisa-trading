@@ -1,0 +1,254 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Asset {
+  id        String   @id // e.g., "BTC-USDT", "EUR-USD"
+  symbol    String
+  type      String   // "CRYPTO" | "FOREX"
+  provider  String   // "BINANCE" | "OANDA"
+  isActive  Boolean  @default(true)
+  Candles   Candle[]
+}
+
+model Candle {
+  id         String   @id @default(uuid())
+  assetId    String
+  timeframe  String   // "5M", "15M", "1H", "4H", "1D"
+  openTime   DateTime // UTC
+  closeTime  DateTime // UTC
+  open       Float
+  high       Float
+  low        Float
+  close      Float
+  volume     Float?   // Optional for Forex if unavailable, required for Crypto
+  asset      Asset    @relation(fields: [assetId], references: [id])
+
+  indicator  IndicatorData?
+  regime     MarketRegime?
+  score      SetupScore?
+  signal     Signal?
+
+  @@unique([assetId, timeframe, openTime])
+  @@index([assetId, timeframe, openTime(sort: Desc)])
+}
+
+model Signal {
+  id             String   @id @default(uuid())
+  candleId       String   @unique
+  assetId        String
+  timeframe      String
+  decision       String   // LONG, SHORT, NO TRADE
+  setup          String
+  aiScore        Float
+  entry          Float?
+  stopLoss       Float?
+  takeProfit     Float?
+  riskReward     Float?
+  invalidation   String?
+  reasons        String   // JSON array
+  risks          String   // JSON array
+  criticResult   String
+  status         String   // VALID, INVALID
+  timestamp      DateTime @default(now())
+
+  candle         Candle   @relation(fields: [candleId], references: [id], onDelete: Cascade)
+}
+
+model IndicatorData {
+  id         String   @id @default(uuid())
+  candleId   String   @unique
+  assetId    String
+  timeframe  String
+  ema20      Float?
+  ema50      Float?
+  ema100     Float?
+  ema200     Float?
+  rsi14      Float?
+  adx14      Float?
+  atr14      Float?
+  macdLine   Float?
+  macdSignal Float?
+  
+  candle     Candle   @relation(fields: [candleId], references: [id], onDelete: Cascade)
+}
+
+model MarketStructure {
+  id         String   @id @default(uuid())
+  assetId    String
+  timeframe  String
+  type       String   // HH, HL, LH, LL, BOS, CHoCH
+  price      Float
+  timestamp  DateTime
+  confidence String   // HIGH, MEDIUM, LOW
+}
+
+model MarketRegime {
+  id         String   @id @default(uuid())
+  candleId   String   @unique
+  assetId    String
+  timeframe  String
+  regime     String   // Strong Bull Trend, Sideways, dll
+  confidence Float    // 0-100%
+  features   String   // JSON string of used features
+  
+  candle     Candle   @relation(fields: [candleId], references: [id], onDelete: Cascade)
+}
+
+model SetupScore {
+  id           String   @id @default(uuid())
+  candleId     String   @unique
+  assetId      String
+  timeframe    String
+  trend        Float    // max 15
+  structure    Float    // max 15
+  momentum     Float    // max 10
+  volume       Float    // max 10
+  volatility   Float    // max 10
+  probability  Float    @default(0) // max 15
+  fundamental  Float    @default(0) // max 10
+  sentiment    Float    @default(0) // max 5
+  riskReward   Float    @default(0) // max 10
+  totalScore   Float    
+  
+  candle     Candle   @relation(fields: [candleId], references: [id], onDelete: Cascade)
+}
+
+model News {
+  id          String   @id @default(uuid())
+  assetId     String
+  title       String
+  content     String   // Sanitized
+  source      String
+  timestamp   DateTime
+  sentiment   String   // POSITIVE, NEGATIVE, NEUTRAL
+  impact      String   // LOW, MEDIUM, HIGH, CRITICAL
+  
+  @@index([assetId, timestamp(sort: Desc)])
+}
+
+model DerivativeData {
+  id            String   @id @default(uuid())
+  assetId       String
+  timestamp     DateTime
+  fundingRate   Float?
+  openInterest  Float?
+  longShortRatio Float?
+  
+  @@unique([assetId, timestamp])
+}
+
+model HistoricalProbability {
+  id            String   @id @default(uuid())
+  bucketKey     String   @unique // e.g., "Breakout-StrongBull-1H"
+  setupType     String
+  regime        String
+  timeframe     String
+  sampleSize    Int
+  winRate       Float
+  averageR      Float
+  profitFactor  Float
+}
+
+model Backtest {
+  id            String   @id @default(uuid())
+  name          String
+  assetId       String
+  timeframe     String
+  startTime     DateTime
+  endTime       DateTime
+  totalTrades   Int      @default(0)
+  winRate       Float    @default(0)
+  netProfit     Float    @default(0)
+  profitFactor  Float    @default(0)
+  maxDrawdown   Float    @default(0)
+  status        String   // RUNNING, COMPLETED, FAILED
+  createdAt     DateTime @default(now())
+  
+  trades        BacktestTrade[]
+}
+
+model BacktestTrade {
+  id            String   @id @default(uuid())
+  backtestId    String
+  signalId      String?  // Reference if from recorded signal
+  type          String   // LONG, SHORT
+  entryTime     DateTime
+  exitTime      DateTime?
+  entryPrice    Float
+  exitPrice     Float?
+  stopLoss      Float
+  takeProfit    Float
+  pnl           Float?
+  fee           Float    @default(0)
+  status        String   // OPEN, CLOSED_WIN, CLOSED_LOSS
+  
+  backtest      Backtest @relation(fields: [backtestId], references: [id], onDelete: Cascade)
+}
+
+model PaperPosition {
+  id            String   @id @default(uuid())
+  signalId      String?  // reference ke Signal yang membuka posisi
+  assetId       String
+  type          String   // LONG, SHORT
+  size          Float
+  entryPrice    Float
+  stopLoss      Float?
+  takeProfit    Float?
+  status        String   // OPEN, CLOSED
+  pnl           Float?
+  openTime      DateTime @default(now())
+  closeTime     DateTime?
+  closePrice    Float?
+}
+
+model Performance {
+  id            String   @id @default(uuid())
+  strategy      String
+  timestamp     DateTime @default(now())
+  winRate       Float
+  profitFactor  Float
+  expectancy    Float
+  drawdown      Float
+  degraded      Boolean  @default(false)
+}
+
+model Correlation {
+  id            String   @id @default(uuid())
+  assetA        String
+  assetB        String
+  timeframe     String
+  correlation   Float
+  timestamp     DateTime @default(now())
+}
+
+model AuditLog {
+  id            String   @id @default(uuid())
+  action        String
+  details       String   // JSON
+  timestamp     DateTime @default(now())
+}
+
+model SystemHealthLog {
+  id            String   @id @default(uuid())
+  provider      String
+  status        String   // UP, DOWN, DEGRADED
+  latencyMs     Int?
+  errorCount    Int      @default(0)
+  timestamp     DateTime @default(now())
+}
